@@ -22,7 +22,7 @@
       </header>    
       
       <div class="box1">
-        <ul id="todo" dnd-between="vm.boxOneItems,done" ng-class="{'minimalList': vm.todoEmpty()}">
+        <ul id="todo" dnd-between="vm.boxOneItems,done" class="list">
           <li class="alert alert-info nomargin" ng-repeat="item in vm.boxOneItems">
             {{item}}
           </li>
@@ -35,7 +35,7 @@
       </div>
 
       <div class="box2">
-        <ul id="done" dnd-between="vm.boxTwoItems,todo" ng-class="{'minimalList': vm.doneEmpty()}">
+        <ul id="done" dnd-between="vm.boxTwoItems,todo" class="list">
           <li class="alert alert-info nomargin" ng-repeat="item in vm.boxTwoItems">
             {{item}}
           </li>
@@ -43,7 +43,6 @@
       </div>
     </div>
 
-    <!-- load cdn scripts -->
 
     
     <!-- load app scripts -->

@@ -3,8 +3,8 @@ var app = angular.module("irTest", []);
 app.controller("testCtrl", function() {
   var vm = this;
   
-  vm.boxOneItems = [];
-  vm.boxTwoItems = [];
+  vm.boxOneItems = ['lunch','dinner'];
+  vm.boxTwoItems = ['breakfast'];
 
   vm.addToBoxOne = function() {
     vm.boxOneItems.push(vm.toDo);

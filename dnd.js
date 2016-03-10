@@ -1,9 +1,7 @@
 app.directive('dndBetween', function($parse) {
   return {
-    // scope: {
 
-    // },
-    link:function (scope, element, attrs) { 
+    link: function (scope, element, attrs) { 
       var args = attrs.dndBetween.split(',');
       var targetArgs = $('#' + args[1]).attr('dnd-between').split(',');
 
@@ -43,8 +41,8 @@ app.directive('dndBetween', function($parse) {
           console.log(targetArgs[0]);
           console.log(args[0]);
 
-          // scope.$apply(toUpdate);
-          // scope.$apply(target); //BUG!!!
+          // scope.$apply(targetArgs[0]);
+          // scope.$apply(args[0]);
         },
         connectWith: '#' + args[1]
       })
