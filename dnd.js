@@ -1,9 +1,20 @@
-app.directive('dndBetween', function($parse) {
+app.directive('dndBetween', function() {
   return {
 
     link: function (scope, element, attrs) { 
       var args = attrs.dndBetween.split(',');
-      var targetArgs = $('#' + args[1]).attr('dnd-between').split(',');
+      
+      var listModel = args[0];
+      var otherListId = args[1];
+
+      var targetArgs = $('#' + otherListId).attr('dnd-between').split(','); 
+      //get access to other listModel through targetArgs
+
+      var otherListModel = targetArgs[0];
+
+      console.log('args', args);
+      console.log('targetArgs', targetArgs);
+
 
       var toUpdate;
       var target;
@@ -11,12 +22,12 @@ app.directive('dndBetween', function($parse) {
 
     // watch the model, so we always know what element
     // is at a specific position
-      scope.$watch(args[0], function(value) {
+      scope.$watch(listModel, function(value) {
         toUpdate = value;
       }, true)
 
       // also watch for changes in the target list
-      scope.$watch(targetArgs[0], function(value) {
+      scope.$watch(otherListModel, function(value) {
         target = value;
       }, true)
 
@@ -38,11 +49,6 @@ app.directive('dndBetween', function($parse) {
           } else {
             toUpdate.splice(newIndex, 0, toMove);
           }
-          console.log(targetArgs[0]);
-          console.log(args[0]);
-
-          // scope.$apply(targetArgs[0]);
-          // scope.$apply(args[0]);
         },
         connectWith: '#' + args[1]
       })
