@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script data-require="angularjs@1.5.0" data-semver="1.5.0" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  </head>
+
+  <body ng-app="irTest">
+    <div class="mainContainer" ng-controller="testCtrl as vm">
+      <header>
+        <form class="form" ng-submit="vm.addToBoxOne()">
+          <input class="input" ng-model="vm.toDo" placeholder="Add new item">
+          <input class="submitButton" type="submit" value="Add New Todo">
+        </form>
+        <button class="saveButton">Save state</button>
+      </header>    
+      
+      <div class="box1">
+        <ul id="todo" dnd-between="vm.boxOneItems,done" ng-class="{'minimalList': vm.todoEmpty()}">
+          <li class="alert alert-info nomargin" ng-repeat="item in vm.boxOneItems">
+            {{item}}
+          </li>
+        </ul>
+      </div>
+      
+      <div class="buttonSwitcher">
+        <button ng-click="vm.moveRight()" class="switch">Right</button>
+        <button ng-click="vm.moveLeft()" class="switch">Left</button>
+      </div>
+
+      <div class="box2">
+        <ul id="done" dnd-between="vm.boxTwoItems,todo" ng-class="{'minimalList': vm.doneEmpty()}">
+          <li class="alert alert-info nomargin" ng-repeat="item in vm.boxTwoItems">
+            {{item}}
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- load cdn scripts -->
+
+    
+    <!-- load app scripts -->
+    <script src="app.js"></script>
+    <script src="dnd.js"></script>
+
+  </body>
+
+</html>
