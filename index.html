@@ -21,6 +21,7 @@
         <button class="saveButton">Save state</button>
       </header>    
       
+      {{vm.boxOneItems}}
       <div class="box1">
         <ul id="todo" dnd-between="vm.boxOneItems,done" class="list">
           <li class="alert alert-info nomargin" ng-repeat="item in vm.boxOneItems">
@@ -34,6 +35,7 @@
         <button ng-click="vm.moveLeft()" class="switch">Left</button>
       </div>
 
+      {{vm.boxTwoItems}}
       <div class="box2">
         <ul id="done" dnd-between="vm.boxTwoItems,todo" class="list">
           <li class="alert alert-info nomargin" ng-repeat="item in vm.boxTwoItems">

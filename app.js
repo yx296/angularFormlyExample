@@ -12,25 +12,12 @@ app.controller("testCtrl", function() {
   }
 
   vm.moveRight = function() {
-    if (!vm.boxOneItems.length) {
-      return;
-    }
+    if (!vm.boxOneItems.length) { return; }
     vm.boxTwoItems.push(vm.boxOneItems.shift());
   }
 
   vm.moveLeft = function() {
-    if (!vm.boxTwoItems.length) {
-      return;
-    }
+    if (!vm.boxTwoItems.length) { return; }
     vm.boxOneItems.unshift(vm.boxTwoItems.pop());
   }
-
-  vm.todoEmpty = function() {
-    return vm.boxOneItems.length === 0;
-  }
-
-  vm.doneEmpty = function() {
-    return vm.boxTwoItems.length === 0;
-  }
-
 });
