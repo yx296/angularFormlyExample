@@ -20,7 +20,7 @@
       
       {{vm.boxOneItems}}
       <div class="box1">
-        <ul id="todo" dnd-between class="list" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <ul id="todo" drag-drop class="list" ondrop="drop(event)" ondragover="allowDrop(event)">
           <li draggable="true" id={{$index}} ondragstart="drag(event)" class="alert alert-info nomargin" ng-repeat="item in vm.boxOneItems">
             {{item}}
           </li>
@@ -34,7 +34,7 @@
 
       {{vm.boxTwoItems}}
       <div class="box2">
-        <ul id="done" dnd-between class="list" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <ul id="done" drag-drop class="list" ondrop="drop(event)" ondragover="allowDrop(event)">
           <li draggable="true" id={{$index}} ondragstart="drag(event)" class="alert alert-info nomargin" ng-repeat="item in vm.boxTwoItems">
             {{item}}
           </li>

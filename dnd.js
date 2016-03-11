@@ -1,7 +1,7 @@
-app.directive('dndBetween', function() {
+app.directive('dragDrop', function() {
   return {
     link: function (scope, element, attrs) { 
-
+      
     }
   }
 });
