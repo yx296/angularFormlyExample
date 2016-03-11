@@ -1,10 +1,10 @@
 app.directive('dropzone', function() {
   return {
     link: function (scope, element, attrs) { 
-      var element = element[0];
+      var item = element[0];
 
-      element.ondrop = drop;
-      element.ondragover = allowDrop;
+      item.ondrop = drop;
+      item.ondragover = allowDrop;
 
       function allowDrop(ev) {
         ev.preventDefault();
@@ -15,7 +15,15 @@ app.directive('dropzone', function() {
         var data = ev.dataTransfer.getData("id");
         ev.target.appendChild(document.getElementById(data));
 
-        scope.$apply(); //doesn't update model
+        var newList = [];
+        
+        for (var i = 0; i < item.children.length; i++) {
+          var newItem = item.children[i];
+          newList.push(newItem.innerText);
+        }
+
+        scope.vm.boxTwoItems = newList;
+        scope.$apply();
       }
     }
   }
@@ -25,10 +33,10 @@ app.directive('dropzone', function() {
 app.directive('dnd', function() {
   return {
     link: function (scope, element, attrs) { 
-      var element = element[0];
+      var item = element[0];
       
-      element.draggable = true;
-      element.ondragstart = drag;
+      item.draggable = true;
+      item.ondragstart = drag;
 
       function drag(ev) {
         ev.dataTransfer.setData("id", ev.target.id);
