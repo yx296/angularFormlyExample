@@ -12,21 +12,15 @@ app.directive('dndBetween', function() {
 
       var otherListModel = targetArgs[0];
 
-      console.log('args', args);
-      console.log('targetArgs', targetArgs);
-
 
       var toUpdate;
       var target;
       var startIndex = -1;
 
-    // watch the model, so we always know what element
-    // is at a specific position
       scope.$watch(listModel, function(value) {
         toUpdate = value;
       }, true)
 
-      // also watch for changes in the target list
       scope.$watch(otherListModel, function(value) {
         target = value;
       }, true)
@@ -44,13 +38,13 @@ app.directive('dndBetween', function() {
           
           toUpdate.splice(startIndex, 1);
 
-          if (newParent === args[1]) {
+          if (newParent === otherListId) {
             target.splice(newIndex, 0, toMove);
           } else {
             toUpdate.splice(newIndex, 0, toMove);
           }
         },
-        connectWith: '#' + args[1]
+        connectWith: '#' + otherListId
       })
     }
   }
