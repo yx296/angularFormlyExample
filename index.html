@@ -5,10 +5,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
     <script data-require="angularjs@1.5.0" data-semver="1.5.0" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   </head>
 
   <body ng-app="irTest">
@@ -23,8 +20,8 @@
       
       {{vm.boxOneItems}}
       <div class="box1">
-        <ul id="todo" dnd-between="vm.boxOneItems,done" class="list">
-          <li class="alert alert-info nomargin" ng-repeat="item in vm.boxOneItems">
+        <ul id="todo" dnd-between class="list">
+          <li drag class="alert alert-info nomargin" ng-repeat="item in vm.boxOneItems">
             {{item}}
           </li>
         </ul>
@@ -37,8 +34,8 @@
 
       {{vm.boxTwoItems}}
       <div class="box2">
-        <ul id="done" dnd-between="vm.boxTwoItems,todo" class="list">
-          <li class="alert alert-info nomargin" ng-repeat="item in vm.boxTwoItems">
+        <ul id="done" dnd-between class="list">
+          <li drag class="alert alert-info nomargin" ng-repeat="item in vm.boxTwoItems">
             {{item}}
           </li>
         </ul>
