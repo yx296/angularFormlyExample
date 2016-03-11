@@ -14,7 +14,8 @@ app.directive('dropzone', function() {
         ev.preventDefault();
         var data = ev.dataTransfer.getData("id");
         ev.target.appendChild(document.getElementById(data));
-        console.log(ev.target);
+
+        scope.$apply(); //doesn't update model
       }
     }
   }
