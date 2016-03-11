@@ -20,8 +20,8 @@
       
       {{vm.boxOneItems}}
       <div class="box1">
-        <ul id="todo" drag-drop class="list" ondrop="drop(event)" ondragover="allowDrop(event)">
-          <li draggable="true" id={{$index}} ondragstart="drag(event)" class="alert alert-info nomargin" ng-repeat="item in vm.boxOneItems">
+        <ul id="todo" dropzone class="list">
+          <li dnd id={{$index}} class="alert alert-info nomargin" ng-repeat="item in vm.boxOneItems">
             {{item}}
           </li>
         </ul>
@@ -34,8 +34,8 @@
 
       {{vm.boxTwoItems}}
       <div class="box2">
-        <ul id="done" drag-drop class="list" ondrop="drop(event)" ondragover="allowDrop(event)">
-          <li draggable="true" id={{$index}} ondragstart="drag(event)" class="alert alert-info nomargin" ng-repeat="item in vm.boxTwoItems">
+        <ul id="done" dropzone class="list">
+          <li dnd id={{$index}} class="alert alert-info nomargin" ng-repeat="item in vm.boxTwoItems">
             {{item}}
           </li>
         </ul>
@@ -47,7 +47,7 @@
     <!-- load app scripts -->
     <script src="app.js"></script>
     <script src="dnd.js"></script>
-    <script src="drag.js"></script>
+    <!-- <script src="drag.js"></script> -->
 
   </body>
 
