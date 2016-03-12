@@ -24,6 +24,9 @@ app.directive('dropzone', function() {
 
         scope.vm.boxTwoItems = newList;
         scope.$apply();
+
+        item.removeChild(item.children[2]);
+
       }
     }
   }
@@ -40,6 +43,15 @@ app.directive('dnd', function() {
 
       function drag(ev) {
         ev.dataTransfer.setData("id", ev.target.id);
+
+        // var newList = [];
+        
+        // for (var i = 0; i < item.children.length; i++) {
+        //   var newItem = item.children[i];
+        //   newList.push(newItem.innerText);
+        // }
+
+        // scope.vm.boxOneItems = newList;
       }
     }
   }

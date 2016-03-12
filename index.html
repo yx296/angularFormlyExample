@@ -22,7 +22,7 @@
       
       {{vm.boxOneItems}}
       <div class="box1">
-        <ul id="todo" dropzone class="list">
+        <ul id="todo" dropzone other="done" class="list">
           <li dnd id={{$index}} class="alert alert-info nomargin" ng-repeat="item in vm.boxOneItems">
             {{item}}
           </li>
@@ -36,7 +36,7 @@
 
       {{vm.boxTwoItems}}
       <div class="box2">
-        <ul id="done" dropzone class="list">
+        <ul id="done" dropzone other="todo" class="list">
           <li dnd id={{$index}} class="alert alert-info nomargin" ng-repeat="item in vm.boxTwoItems">
             {{item}}
           </li>
