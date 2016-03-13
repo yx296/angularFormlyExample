@@ -4,7 +4,7 @@ app.controller("testCtrl", function() {
   var vm = this;
   
   vm.boxOneItems = ['lunch','dinner'];
-  vm.boxTwoItems = ['breakfast'];
+  vm.boxTwoItems = ['breakfast', '2nd breakfast'];
 
   vm.addToBoxOne = function() {
     vm.boxOneItems.push(vm.toDo);
