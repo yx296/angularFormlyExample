@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
-
+  
   <head>
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css" />
     <script data-require="angularjs@1.5.0" data-semver="1.5.0" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.js"></script>
@@ -18,11 +17,10 @@
         <button class="saveButton">Save state</button>
       </header>    
 
-      <p>changingDom by dragging doesn't update model</p>
-      
       {{vm.boxOneItems}}
       <div class="box1">
-        <ul id="todo" dropzone other="done" class="list">
+        <p>Todos</p>
+        <ul id="todo" dropzone class="list">
           <li dnd id="todo-{{$index}}" class="alert alert-info nomargin" ng-repeat="item in vm.boxOneItems track by $index">
             {{item}}
           </li>
@@ -36,7 +34,8 @@
 
       {{vm.boxTwoItems}}
       <div class="box2">
-        <ul id="done" dropzone other="todo" class="list">
+        <p>Done</p>
+        <ul id="done" dropzone class="list">
           <li dnd id="done-{{$index}}" class="alert alert-info nomargin" ng-repeat="item in vm.boxTwoItems track by $index">
             {{item}}
           </li>
@@ -44,8 +43,6 @@
       </div>
     </div>
 
-
-    
     <!-- load app scripts -->
     <script src="app.js"></script>
     <script src="dnd.js"></script>

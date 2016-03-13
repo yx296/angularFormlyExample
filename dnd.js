@@ -1,6 +1,8 @@
 app.directive('dropzone', function() {
   return {
     link: function (scope, element, attrs) { 
+      element.css({cursor: 'pointer'})
+
       var item = element[0];
 
       item.ondrop = drop;
@@ -10,60 +12,47 @@ app.directive('dropzone', function() {
         ev.preventDefault();
       }
 
-
-      function updateModel() {
-        
-      }
-
-
       function drop(ev) { 
         ev.preventDefault();
-        var data = ev.dataTransfer.getData("id");
-        var draggedText = document.getElementById(data).innerText;
+        var draggedId = ev.dataTransfer.getData("id");
+        var draggedText = document.getElementById(draggedId).innerText;
         
-        var deleteIndex;
-
-        var draggedId = document.getElementById(data).id
         var draggedIdType = draggedId.slice(0, 4);
 
-        var todo = document.getElementById('todo');
-        var todosArray = Array.prototype.slice.call(todo.children);
-        
+        var todosArray = document.getElementById('todo').children;
+        var doneArray = document.getElementById('done').children;
 
+        var boxTwoItems = scope.vm.boxTwoItems;
+        var boxOneItems = scope.vm.boxOneItems;
 
         if (ev.target.id === 'done') { 
           if (draggedIdType === 'todo') { 
-            scope.vm.boxTwoItems.push(draggedText)
-            for (var i = 0; i < todosArray.length; i++) {
-              var id = todosArray[i].id;
-              if (id === draggedId) {
-                deleteIndex = i;
-              }
-            }
-            scope.vm.boxOneItems.splice(deleteIndex, 1);
+            updateModel(boxTwoItems, boxOneItems, todosArray, draggedText, draggedId);
           } else if (draggedIdType === 'done') {
-            deleteIndex = scope.vm.boxTwoItems.indexOf(draggedText);
-            scope.vm.boxTwoItems.splice(deleteIndex, 1);
-            scope.vm.boxTwoItems.push(draggedText)
+            updateModel(boxTwoItems, boxTwoItems, doneArray, draggedText, draggedId);
           }
         } 
 
         if (ev.target.id === 'todo') {
           if (draggedIdType === 'done') {
-            deleteIndex = scope.vm.boxTwoItems.indexOf(draggedText);
-            scope.vm.boxTwoItems.splice(deleteIndex, 1);
-            scope.vm.boxOneItems.push(draggedText);
+            updateModel(boxOneItems, boxTwoItems, doneArray, draggedText, draggedId);
           } else if (draggedIdType ==='todo') {
-            deleteIndex = scope.vm.boxOneItems.indexOf(draggedText);
-            scope.vm.boxOneItems.splice(deleteIndex, 1);
-            scope.vm.boxOneItems.push(draggedText);
+            updateModel(boxOneItems, boxOneItems, todosArray, draggedText, draggedId)            
           }
         }
-
         scope.$apply();
-
-
       }
+      
+      function updateModel(toList, fromList, DOMCollection, text, draggedId) {
+        toList.push(text);
+        for (var i = 0; i < DOMCollection.length; i++) {  // need to delete dragged DOM node from dragged list
+          var id = DOMCollection[i].id;
+          if (id === draggedId) {
+            fromList.splice(i, 1);
+          }
+        }
+      }
+
     }
   }
 });
@@ -79,14 +68,6 @@ app.directive('dnd', function() {
 
       function drag(ev) {
         ev.dataTransfer.setData("id", ev.target.id);
-        // var newList = [];
-        
-        // for (var i = 0; i < item.children.length; i++) {
-        //   var newItem = item.children[i];
-        //   newList.push(newItem.innerText);
-        // }
-
-        // scope.vm.boxOneItems = newList;
       }
     }
   }
