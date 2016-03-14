@@ -72,5 +72,3 @@ app.directive('dnd', function() {
     }
   }
 });
-
-

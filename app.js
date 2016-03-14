@@ -20,8 +20,4 @@ app.controller("testCtrl", function() {
     if (!vm.boxTwoItems.length) { return; }
     vm.boxOneItems.unshift(vm.boxTwoItems.pop());
   }
-
-
 });
-
-
