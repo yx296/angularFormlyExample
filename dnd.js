@@ -22,8 +22,8 @@ app.directive('dropzone', function() {
         var todosArray = document.getElementById('todo').children;
         var doneArray = document.getElementById('done').children;
 
-        var boxTwoItems = scope.vm.boxTwoItems;
-        var boxOneItems = scope.vm.boxOneItems;
+        var boxOneItems = scope.vm.todo;
+        var boxTwoItems = scope.vm.done;
 
         if (ev.target.id === 'done') { 
           if (draggedIdType === 'todo') { 

@@ -72,3 +72,7 @@ header {
 .list {
   min-height: 600px;
 }
+
+.closeButton {
+  float: right;
+}

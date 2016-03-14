@@ -19,12 +19,13 @@
         <button class="loadButton" ng-click="vm.loadState()">Load state</button>
       </header>    
 
-      {{vm.boxOneItems}}
+      {{vm.todo}}
       <div class="box1">
         <p>Todos</p>
         <ul id="todo" dropzone class="list">
-          <li dnd id="todo-{{$index}}" class="alert alert-info nomargin" ng-repeat="item in vm.boxOneItems track by $index">
+          <li dnd id="todo-{{$index}}" class="alert alert-info nomargin" ng-repeat="item in vm.todo track by $index">
             {{item}}
+            <button id="todoDelete" ng-click="vm.deleteTask($index, $event)" class="closeButton">X</button>
           </li>
         </ul>
       </div>
@@ -34,12 +35,13 @@
         <button ng-click="vm.moveLeft()" class="switch">Left</button>
       </div>
 
-      {{vm.boxTwoItems}}
+      {{vm.done}}
       <div class="box2">
         <p>Done</p>
         <ul id="done" dropzone class="list">
-          <li dnd id="done-{{$index}}" class="alert alert-info nomargin" ng-repeat="item in vm.boxTwoItems track by $index">
+          <li dnd id="done-{{$index}}" class="alert alert-info nomargin" ng-repeat="item in vm.done track by $index">
             {{item}}
+            <button id="doneDelete" ng-click="vm.deleteTask($index, $event)" class="closeButton">&times;</button>
           </li>
         </ul>
       </div>

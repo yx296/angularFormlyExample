@@ -3,31 +3,31 @@ var app = angular.module("irTest", []);
 app.controller("testCtrl", function($timeout) {
   var vm = this;
   
-  vm.boxOneItems = ['lunch','dinner'];
-  vm.boxTwoItems = ['breakfast', '2nd breakfast'];
+  vm.todo = ['lunch','dinner'];
+  vm.done = ['breakfast', '2nd breakfast'];
   vm.saveMessage = ''
 
-  var savedBoxOne = vm.boxOneItems.slice();
-  var savedBoxTwo = vm.boxTwoItems.slice();
+  var savedBoxOne = vm.todo.slice();
+  var savedBoxTwo = vm.done.slice();
 
   vm.addToBoxOne = function() {
-    vm.boxOneItems.push(vm.toDo);
+    vm.todo.push(vm.toDo);
     vm.toDo = '';
   };
 
   vm.moveRight = function() {
-    if (!vm.boxOneItems.length) { return; }
-    vm.boxTwoItems.push(vm.boxOneItems.shift());
+    if (!vm.todo.length) { return; }
+    vm.done.push(vm.todo.shift());
   };
 
   vm.moveLeft = function() {
-    if (!vm.boxTwoItems.length) { return; }
-    vm.boxOneItems.unshift(vm.boxTwoItems.pop());
+    if (!vm.done.length) { return; }
+    vm.todo.unshift(vm.done.pop());
   };
   
   vm.saveState = function() {
-    savedBoxOne = vm.boxOneItems.slice();
-    savedBoxTwo = vm.boxTwoItems.slice();
+    savedBoxOne = vm.todo.slice();
+    savedBoxTwo = vm.done.slice();
     vm.saveMessage = 'Todos saved';
     $timeout(function() {
       vm.saveMessage = '';
@@ -35,7 +35,12 @@ app.controller("testCtrl", function($timeout) {
   };
 
   vm.loadState = function() {
-    vm.boxOneItems = savedBoxOne.slice();
-    vm.boxTwoItems = savedBoxTwo.slice();
+    vm.todo = savedBoxOne.slice();
+    vm.done = savedBoxTwo.slice();
   };
+
+  vm.deleteTask = function(index, event) {
+    console.log(event.target.id);
+    console.log(index);
+  }
 });
