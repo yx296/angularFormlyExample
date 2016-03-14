@@ -37,7 +37,7 @@ app.directive('dropzone', function() {
           if (draggedIdType === 'done') {
             updateModel(boxOneItems, boxTwoItems, doneArray, draggedText, draggedId);
           } else if (draggedIdType ==='todo') {
-            updateModel(boxOneItems, boxOneItems, todosArray, draggedText, draggedId)            
+            updateModel(boxOneItems, boxOneItems, todosArray, draggedText, draggedId);            
           }
         }
         scope.$apply();
@@ -54,7 +54,7 @@ app.directive('dropzone', function() {
       }
 
     }
-  }
+  };
 });
 
 
