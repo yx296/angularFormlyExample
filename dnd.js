@@ -70,5 +70,5 @@ app.directive('dnd', function() {
         ev.dataTransfer.setData("id", ev.target.id);
       }
     }
-  }
+  };
 });

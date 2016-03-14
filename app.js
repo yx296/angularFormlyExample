@@ -12,27 +12,27 @@ app.controller("testCtrl", function() {
   vm.addToBoxOne = function() {
     vm.boxOneItems.push(vm.toDo);
     vm.toDo = '';
-  }
+  };
 
   vm.moveRight = function() {
     if (!vm.boxOneItems.length) { return; }
     vm.boxTwoItems.push(vm.boxOneItems.shift());
-  }
+  };
 
   vm.moveLeft = function() {
     if (!vm.boxTwoItems.length) { return; }
     vm.boxOneItems.unshift(vm.boxTwoItems.pop());
-  }
+  };
 
   vm.saveState = function() {
     savedBoxOne = vm.boxOneItems.slice();
     savedBoxTwo = vm.boxTwoItems.slice();
-  }
+  };
 
   vm.loadState = function() {
     vm.boxOneItems = savedBoxOne.slice();
     vm.boxTwoItems = savedBoxTwo.slice();
-  }
+  };
 
   vm.saveState();
 });
