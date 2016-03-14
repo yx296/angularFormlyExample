@@ -40,7 +40,7 @@ app.controller("testCtrl", function($timeout) {
   };
 
   vm.deleteTask = function(index, event) {
-    console.log(event.target.id);
-    console.log(index);
-  }
+    var type = event.target.id.slice(0,4);
+    vm[type].splice(index, 1);
+  };
 });

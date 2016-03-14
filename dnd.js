@@ -15,8 +15,8 @@ app.directive('dropzone', function() {
       function drop(ev) { 
         ev.preventDefault();
         var draggedId = ev.dataTransfer.getData("id");
-        var draggedText = document.getElementById(draggedId).innerText;
-        
+        var draggedText = document.getElementById(draggedId).innerText.slice(0, -2); 
+        // slice gets rid of the x from the delete button
         var draggedIdType = draggedId.slice(0, 4);
 
         var todosArray = document.getElementById('todo').children;
