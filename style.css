@@ -57,9 +57,16 @@ header {
   margin: 0 auto;
 }
 
-.saveButton, .loadButton {
-  position: relative;
-  top: 26px;
+.saveButton {
+  position: absolute;
+  top: 53px;
+  left: 116px;
+}
+
+.loadButton {
+  position: absolute;
+  top: 53px;
+  left: 300px;
 }
 
 .list {
