@@ -72,3 +72,19 @@ app.directive('dnd', function() {
     }
   };
 });
+
+
+app.directive('clickToEdit', function() {
+  return {
+    link: function (scope, element, attrs) { 
+      var item = element[0];
+      
+      item.draggable = true;
+      item.ondragstart = drag;
+
+      function drag(ev) {
+        ev.dataTransfer.setData("id", ev.target.id);
+      }
+    }
+  };
+});

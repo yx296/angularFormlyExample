@@ -24,7 +24,7 @@
         <p>Todos</p>
         <ul id="todo" dropzone class="list">
           <li dnd id="todo-{{$index}}" class="alert alert-info nomargin" ng-repeat="item in vm.todo track by $index">
-            {{item}}
+            <span>{{item}}</span>
             <button id="todoDelete" ng-click="vm.deleteTask($index, $event)" class="closeButton">&times;</button>
           </li>
         </ul>
@@ -40,7 +40,7 @@
         <p>Done</p>
         <ul id="done" dropzone class="list">
           <li dnd id="done-{{$index}}" class="alert alert-info nomargin" ng-repeat="item in vm.done track by $index">
-            {{item}}
+            <span>{{item}}</span>
             <button id="doneDelete" ng-click="vm.deleteTask($index, $event)" class="closeButton">&times;</button>
           </li>
         </ul>
