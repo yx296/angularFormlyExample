@@ -58,10 +58,12 @@ header {
 }
 
 
-.saveButton {
+.saveButton, .loadButton {
   position: relative;
   top: 26px;
 }
+
+
 
 .list {
   min-height: 600px;

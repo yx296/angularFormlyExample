@@ -14,7 +14,8 @@
           <input class="input" ng-model="vm.toDo" placeholder="Add new item">
           <input class="submitButton" type="submit" value="Add New Todo">
         </form>
-        <button class="saveButton">Save state</button>
+        <button class="saveButton" ng-click="vm.saveState()">Save state</button>
+        <button class="loadButton" ng-click="vm.loadState()">Load state</button>
       </header>    
 
       {{vm.boxOneItems}}
