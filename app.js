@@ -24,8 +24,6 @@ app.controller("testCtrl", function($timeout) {
     if (!vm.boxTwoItems.length) { return; }
     vm.boxOneItems.unshift(vm.boxTwoItems.pop());
   };
-
-
   
   vm.saveState = function() {
     savedBoxOne = vm.boxOneItems.slice();
@@ -40,5 +38,4 @@ app.controller("testCtrl", function($timeout) {
     vm.boxOneItems = savedBoxOne.slice();
     vm.boxTwoItems = savedBoxTwo.slice();
   };
-
 });
