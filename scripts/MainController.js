@@ -14,7 +14,7 @@
         // on the  element in index.html
         vm.rental = {
         };
-        
+
         // An array of our form fields with configuration
         // and options set. We make reference to this in
         // the 'fields' attribute on the  element
@@ -26,7 +26,7 @@
                     type: 'text',
                     label: 'First Name',
                     placeholder: 'Enter your first name',
-                    required: true
+                    required: true,
                 }
             },
             {
@@ -78,9 +78,47 @@
                     placeholder: 'Enter your insurance policy number'
                 },
                 hideExpression: '!model.under25 || !model.province',
+            },
+            {
+                key: 'license',
+                type: 'input',
+                templateOptions: {
+                    label: 'Driver\'s License Number',
+                    placeholder: 'Enter your drivers license number'
+                },
+                hideExpression: '!model.province',
+                validators: {
+                    // Custom validator to check whether the driver's license
+                    // number that the user enters is valid or not
+                    driversLicense: function($viewValue, $modelValue, scope) {
+                        var value = $modelValue || $viewValue;
+                        if(value) {
+                            // call the validateDriversLicense function
+                            // which either returns true or false
+                            // depending on whether the entry is valid
+                            return validateDriversLicence(value)
+                        }
+                   }
+                },
+                expressionProperties: {
+                    // We currently only have a driver's license pattern for Ontario
+                    // so we need to disable this field if we've picked a province/territory
+                    // other than Ontario
+                    'templateOptions.disabled': function($viewValue, $modelValue, scope) {
+                        console.log(scope);
+                        if(scope.model.province === 'ontario') {
+                            return false;
+                        }
+                        return true;
+                    }
+                }
             }
         ];
-        
+
+        function validateDriversLicence(value) {
+            return /[A-Za-z]\d{4}[\s|\-]*\d{5}[\s|\-]*\d{5}$/.test(value);
+        }
+
     }
 
 })();
