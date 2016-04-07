@@ -1,56 +1,33 @@
+<!-- index.html -->
+
 <!DOCTYPE html>
 <html>
-  
-  <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css" />
-    <script data-require="angularjs@1.5.0" data-semver="1.5.0" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.js"></script>
-  </head>
+<head>
+    <title>angular-formly</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+<body ng-app="formlyApp" ng-controller="MainController as vm">
 
-  <body ng-app="irTest">
-    <div class="mainContainer" ng-controller="testCtrl as vm">
-      <header>
-        <form class="form" ng-submit="vm.addToBoxOne()">
-          <input class="input" ng-model="vm.toDo" placeholder="Add new item">
-          <input class="submitButton" type="submit" value="Add New Todo">
-        </form>
-        <p class="saveMessage">{{vm.saveMessage}}</p>
-        <button class="saveButton" ng-click="vm.saveState()">Save state</button>
-        <button class="loadButton" ng-click="vm.loadState()">Load state</button>
-      </header>    
+    <div class="container col-md-4 col-md-offset-4">
+      <form novalidate>
+        <h1>Rent-a-Car, eh?</h1>
+        <formly-form model="vm.rental" fields="vm.rentalFields" form="vm.rentalForm">
+          <button type="submit" class="btn btn-primary" ng-disabled="vm.rentalForm.$invalid">Submit</button>
+        </formly-form>
+      </form>
+    </div>  
 
-      {{vm.todo}}
-      <div class="box1">
-        <p>Todos</p>
-        <ul id="todo" dropzone class="list">
-          <li dnd id="todo-{{$index}}" class="alert alert-info nomargin" ng-repeat="item in vm.todo track by $index">
-            <span>{{item}}</span>
-            <button id="todoDelete" ng-click="vm.deleteTask($index, $event)" class="closeButton">&times;</button>
-          </li>
-        </ul>
-      </div>
-      
-      <div class="buttonSwitcher">
-        <button ng-click="vm.moveRight()" class="switch">Right</button>
-        <button ng-click="vm.moveLeft()" class="switch">Left</button>
-      </div>
+</body>
 
-      {{vm.done}}
-      <div class="box2">
-        <p>Done</p>
-        <ul id="done" dropzone class="list">
-          <li dnd id="done-{{$index}}" class="alert alert-info nomargin" ng-repeat="item in vm.done track by $index">
-            <span>{{item}}</span>
-            <button id="doneDelete" ng-click="vm.deleteTask($index, $event)" class="closeButton">&times;</button>
-          </li>
-        </ul>
-      </div>
-    </div>
+    <!-- Application Dependencies -->
+    <script src="node_modules/api-check/dist/api-check.js"></script>
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-formly/dist/formly.js"></script>
+    <script src="node_modules/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.js"></script>
 
-    <!-- load app scripts -->
+    <!-- Application Scripts -->
     <script src="app.js"></script>
-    <script src="dnd.js"></script>
-
-  </body>
-
+    <script src="scripts/MainController.js"></script>
+    <script src="scripts/province.js"></script>
 </html>
