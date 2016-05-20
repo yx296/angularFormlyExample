@@ -10,12 +10,15 @@
 <body ng-app="formlyApp" ng-controller="MainController as vm">
 
     <div class="container col-md-4 col-md-offset-4">
-      <form novalidate>
-        <h1>Rent-a-Car, eh?</h1>
-        <formly-form model="vm.rental" fields="vm.rentalFields" form="vm.rentalForm">
-          <button type="submit" class="btn btn-primary" ng-disabled="vm.rentalForm.$invalid">Submit</button>
-        </formly-form>
-      </form>
+        <form novalidate ng-submit="!vm.form.$invalid && vm.onSubmit()" name="vm.form">
+            <formly-form model="vm.model" fields="vm.fields" form="vm.form">
+                <div class="col col-third">
+                    <div class="row">
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+                </div>
+            </formly-form>
+        </form>
     </div>  
 
 </body>
